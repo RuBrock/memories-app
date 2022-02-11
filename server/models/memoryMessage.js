@@ -16,6 +16,6 @@ const memorySchema = mongoose.Schema({
   },
 });
 
-const MemoryMessage = mongoose.Model('MemoryMessage', memorySchema);
+const MemoryMessage = mongoose.model('MemoryMessage', memorySchema);
 
 export default MemoryMessage;
