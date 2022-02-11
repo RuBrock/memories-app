@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getMemories } from './actions/memories';
 import { Container, AppBar, Typography, Grow, Grid } from '@mui/material';
 import Form from './components/Form/Form';
 import Memories from './components/Memories/Memories';
@@ -7,6 +10,11 @@ import useStyles from './styles';
 
 const App = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMemories());
+  }, [dispatch])
 
   return (
     <Container maxWidth="lg">

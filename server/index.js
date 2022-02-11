@@ -6,13 +6,14 @@ import cors from 'cors';
 import memoriesRoutes from './routes/memories.js';
 
 const app = express();
-app.use('/memories', memoriesRoutes);
 
 //SETUP BodyParser - limit to control images size
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
+//Routes need to be under cors config
+app.use('/memories', memoriesRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://rubrock:rubrock123@cluster0.t8cfe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

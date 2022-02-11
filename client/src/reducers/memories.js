@@ -1,7 +1,7 @@
-export default (memories = [], action) => {
+const memoriesReducer = (memories = [], action) => {
   switch(action.type) {
     case 'FETCH_ALL':
-      return memories;
+      return action.payload;
 
     case 'CREATE':
       return memories;
@@ -10,3 +10,5 @@ export default (memories = [], action) => {
       return memories;
   }
 }
+
+export default memoriesReducer;
