@@ -3,10 +3,10 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import postRoutes from './routes/posts.js';
+import memoriesRoutes from './routes/memories.js';
 
 const app = express();
-app.use('/posts', postRoutes);
+app.use('/memories', memoriesRoutes);
 
 //SETUP BodyParser - limit to control images size
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
