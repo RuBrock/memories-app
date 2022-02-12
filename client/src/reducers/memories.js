@@ -4,7 +4,7 @@ const memoriesReducer = (memories = [], action) => {
       return action.payload;
 
     case 'CREATE':
-      return memories;
+      return [...memories, action.payload];
 
     default:
       return memories;
