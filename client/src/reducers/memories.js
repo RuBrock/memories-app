@@ -11,6 +11,9 @@ const memoriesReducer = (memories = [], action) => {
         memory._id === action.payload._id ? action.payload : memory
       )
 
+    case 'DELETE':
+      return memories.filter((memory) => memory._id !== action.payload)
+
     default:
       return memories;
   }

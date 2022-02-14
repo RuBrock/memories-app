@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { 
   Card,
   CardActions,
@@ -10,11 +11,13 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import moment from 'moment';
+import { deleteMemory } from '../../../actions/memories';
 
 import useStyles from './styles';
 
 const Memory = ({ memory, setCurrentId }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Card className={classes.card}>
@@ -77,7 +80,7 @@ const Memory = ({ memory, setCurrentId }) => {
           <Button
             size="small"
             color="primary"
-            onClick={() => {}}
+            onClick={() => { dispatch(deleteMemory(memory._id)) }}
           >
             <DeleteIcon fontSize='small' /> Delete
           </Button>

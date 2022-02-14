@@ -2,17 +2,17 @@ import express from 'express';
 
 import { 
   getMemories, 
-  createMemorie, 
-  updateMemorie
-  // deleteMemorie 
+  createMemory, 
+  updateMemory,
+  deleteMemory 
 } from '../controllers/memoryController.js';
 
 const router = express.Router();
 
 //Memories routes
 router.get('/', getMemories);
-router.post('/', createMemorie);
-router.patch('/:id', updateMemorie);
-// router.delete('/:id', deleteMemorie);
+router.post('/', createMemory);
+router.patch('/:id', updateMemory);
+router.delete('/:id', deleteMemory);
 
 export default router;
