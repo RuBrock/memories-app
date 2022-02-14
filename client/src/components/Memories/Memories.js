@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Grid, CircularProgress } from '@mui/material';
 import Memory from "./Memory/Memory";
 
 import useStyles from './styles';
@@ -10,11 +11,26 @@ const Memories = () => {
   console.log(memories);
 
   return (
-    <>
-      <h3>Memories</h3>
-      <Memory />
-      <Memory />
-    </>
+    !memories.length ? <CircularProgress /> : (
+      <Grid 
+        className={classes.mainContainer} 
+        alignItems="stretch"
+        spacing={3}
+        container
+      >
+        {memories.map((memory) => (
+          <Grid 
+            key={memory._id}
+            xs={12} 
+            sm={12} 
+            md={6}
+            item
+          >
+            <Memory memory={memory} />
+          </Grid>
+        ))}
+      </Grid>
+    )
   );
 }
 
