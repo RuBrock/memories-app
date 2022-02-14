@@ -1,30 +1,46 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createMemory } from '../../actions/memories';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { createMemory, updateMemory } from '../../actions/memories';
 import { TextField, Button, Typography, Paper } from '@mui/material';
 import FileBase from 'react-file-base64';
 
 import useStyles from './styles';
 
-const Form = () => {
-  const [memoryData, setMemoryData] = useState({
-    creator: '',
-    title: '',
-    message: '',
-    tags: '',
-    selectedFile: '',
-  });
+const initialState = {
+  creator: '',
+  title: '',
+  message: '',
+  tags: '',
+  selectedFile: '',
+};
+
+const Form = ({ currentId, setCurrentId }) => {
+  const [memoryData, setMemoryData] = useState(initialState);
+  const currentMemory = useSelector((state) => 
+    currentId ? state.memories.find((m) => m._id === currentId) : null
+  );
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(currentMemory) setMemoryData(currentMemory);
+  }, [currentMemory])  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createMemory(memoryData));
+    if(currentId) {
+      dispatch(updateMemory(currentId, memoryData));
+    } else {
+      dispatch(createMemory(memoryData));
+    }
+
+    clear();
   };
 
   const clear = () => {
-
+    setCurrentId(null);
+    setMemoryData({ ...initialState });
   };
 
   return (
@@ -36,7 +52,7 @@ const Form = () => {
         onSubmit={handleSubmit}
       >
         <Typography variant='h6'>
-          Registre sua Memória
+          {currentId ? 'Edite' : 'Registre'} sua Memória
         </Typography>
 
         <TextField 

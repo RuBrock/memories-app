@@ -4,11 +4,9 @@ import Memory from "./Memory/Memory";
 
 import useStyles from './styles';
 
-const Memories = () => {
+const Memories = ({ setCurrentId }) => {
   const classes = useStyles();
   const memories = useSelector((state) => state.memories);
-
-  console.log(memories);
 
   return (
     !memories.length ? <CircularProgress /> : (
@@ -26,7 +24,7 @@ const Memories = () => {
             md={6}
             item
           >
-            <Memory memory={memory} />
+            <Memory memory={memory} setCurrentId={setCurrentId} />
           </Grid>
         ))}
       </Grid>

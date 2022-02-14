@@ -13,7 +13,7 @@ import moment from 'moment';
 
 import useStyles from './styles';
 
-const Memory = ({ memory }) => {
+const Memory = ({ memory, setCurrentId }) => {
   const classes = useStyles();
 
   return (
@@ -35,7 +35,7 @@ const Memory = ({ memory }) => {
             color: 'white',
           }}
           size="small"
-          onClick={() => {}}
+          onClick={() => setCurrentId(memory._id)}
         >
           <MoreHorizIcon fontSize='default' />
         </Button>
@@ -47,6 +47,14 @@ const Memory = ({ memory }) => {
         </Typography>
       </div>
 
+      <Typography 
+        className={classes.title} 
+        variant="h5"
+        gutterBottom
+      >
+        {memory.title}
+      </Typography>
+      
       <CardContent>
         <Typography 
           className={classes.title} 

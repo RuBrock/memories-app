@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 import MemoryMessage from '../models/memoryMessage.js';
 
 export const getMemories = async (request, response) => {
@@ -10,7 +12,7 @@ export const getMemories = async (request, response) => {
   }
 }
 
-export const createMemories = async (request, response) => {
+export const createMemorie = async (request, response) => {
   const memory = request.body;
 
   const newMemory = new MemoryMessage(memory);
@@ -22,4 +24,18 @@ export const createMemories = async (request, response) => {
   } catch(error) {
     response.status(400).json({ message: error.message });
   }
+}
+
+export const updateMemorie = async (request, response) => {
+  const { id: _id } = request.params;
+  const memory = request.body;
+
+  if(!mongoose.Types.ObjectId.isValid(_id)) 
+    return response.status(404).send('No Memory with that ID.');
+
+  const updatedMemorie = await MemoryMessage.findByIdAndUpdate(
+    _id, { ...memory, _id }, { new: true }
+  );
+
+  response.json(updatedMemorie)
 }

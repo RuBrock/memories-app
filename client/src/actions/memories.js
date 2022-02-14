@@ -7,16 +7,26 @@ export const getMemories = () => async (dispatch) => {
 
     dispatch({ type: 'FETCH_ALL', payload: data });
   } catch(error) {
-    console.log(error.message);
+    console.log(error);
   }
 }
 
-export const createMemory = (post) => async (dispatch) => {
+export const createMemory = (memory) => async (dispatch) => {
   try {
-    const { data } = await api.createMemory(post);
+    const { data } = await api.createMemory(memory);
 
     dispatch({ type: 'CREATE', payload: data });
   } catch(error) {
-    console.log(error.message);
+    console.log(error);
+  }
+}
+
+export const updateMemory = (id, memory) => async (dispatch) => {
+  try {
+    const { data } = await api.updateMemory(id, memory);
+
+    dispatch({ type: 'UPDATE', payload: data });
+  } catch(error) {
+    console.log(error);
   }
 }
