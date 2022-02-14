@@ -36,7 +36,7 @@ const Form = () => {
         onSubmit={handleSubmit}
       >
         <Typography variant='h6'>
-          Creating a Memory
+          Registre sua Memória
         </Typography>
 
         <TextField 
