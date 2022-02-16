@@ -17,7 +17,7 @@ app.use(cors());
 //Routes need to be under cors config
 app.use('/memories', memoriesRoutes);
 
-app.use('/', (request, response) => {
+app.get('/', (request, response) => {
   response.send('Hello to memories API')
 });
 
