@@ -60,9 +60,9 @@ const Memory = ({ memory, setCurrentId }) => {
       
       <CardContent>
         <Typography 
-          className={classes.title} 
-          variant="h5"
-          gutterBottom
+          variant="body2" 
+          component="p"
+          color="textSecondary"
         >
           {memory.message}
         </Typography>
@@ -74,15 +74,17 @@ const Memory = ({ memory, setCurrentId }) => {
             color="primary"
             onClick={() => { dispatch(likeMemory(memory._id)) }}
           >
-            <ThumbUpAltIcon fontSize='small' /> Like 
-            {memory.likeCount}
+            <ThumbUpAltIcon className={classes.iconAction} fontSize='small' />
+            Like 
+            <span className={classes.likeCount}>{memory.likeCount}</span>
           </Button>
           <Button
             size="small"
-            color="primary"
+            color="error"
             onClick={() => { dispatch(deleteMemory(memory._id)) }}
           >
-            <DeleteIcon fontSize='small' /> Delete
+            <DeleteIcon className={classes.iconAction} fontSize='small' />
+            Delete
           </Button>
       </CardActions>
     </Card>

@@ -92,7 +92,7 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           value={memoryData.tags}
           onChange={(e) => 
-            setMemoryData({ ...memoryData, tags: e.target.value })
+            setMemoryData({ ...memoryData, tags: e.target.value.split(',') })
           }
         />
 

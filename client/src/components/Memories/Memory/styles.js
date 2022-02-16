@@ -49,4 +49,10 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  iconAction: {
+    marginRight: '3px',
+  },
+  likeCount: {
+    marginLeft: '5px',
+  },
 });
