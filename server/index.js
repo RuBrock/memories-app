@@ -24,7 +24,7 @@ app.use('/', (request, response) => {
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(ENV['CONNECTION_URL'], 
+  .connect(process.env.CONNECTION_URL, 
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => 
