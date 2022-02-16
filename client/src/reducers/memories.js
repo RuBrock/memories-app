@@ -7,6 +7,7 @@ const memoriesReducer = (memories = [], action) => {
       return [...memories, action.payload];
 
     case 'UPDATE':
+    case 'LIKE':
       return memories.map((memory) => 
         memory._id === action.payload._id ? action.payload : memory
       )

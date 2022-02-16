@@ -7,3 +7,4 @@ export const createMemory = (newMemory) => axios.post(url, newMemory);
 export const updateMemory = (id, updatedMemory) => 
   axios.patch(`${url}/${id}`, updatedMemory);
 export const deleteMemory = (id) => axios.delete(`${url}/${id}`);
+export const likeMemory = (id) => axios.patch(`${url}/${id}/likeMemory`);

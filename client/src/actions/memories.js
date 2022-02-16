@@ -40,3 +40,13 @@ export const deleteMemory = (id) => async (dispatch) => {
     console.log(error);
   }
 }
+
+export const likeMemory = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.likeMemory(id);
+
+    dispatch({ type: 'LIKE', payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+}

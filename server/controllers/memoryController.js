@@ -50,3 +50,17 @@ export const deleteMemory = async (request, response) => {
 
   response.json({ message: 'Memory deleted successfully.' })
 }
+
+export const likeMemory = async (request, response) => {
+  const { id } = request.params;
+  
+  if(!mongoose.Types.ObjectId.isValid(id)) 
+    return response.status(404).send('No Memory with that ID.');
+
+  const memory = await MemoryMessage.findById(id);
+  const updatedMemory = await MemoryMessage.findByIdAndUpdate(
+    id, { likeCount: memory.likeCount + 1}, { new: true }
+  )
+
+  response.json(updatedMemory);
+}

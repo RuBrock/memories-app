@@ -11,7 +11,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import moment from 'moment';
-import { deleteMemory } from '../../../actions/memories';
+import { deleteMemory, likeMemory } from '../../../actions/memories';
 
 import useStyles from './styles';
 
@@ -72,7 +72,7 @@ const Memory = ({ memory, setCurrentId }) => {
           <Button
             size="small"
             color="primary"
-            onClick={() => {}}
+            onClick={() => { dispatch(likeMemory(memory._id)) }}
           >
             <ThumbUpAltIcon fontSize='small' /> Like 
             {memory.likeCount}
