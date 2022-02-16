@@ -1,18 +1,20 @@
+import { CREATE, DELETE, FETCH_ALL, LIKE, UPDATE } from '../constants/actionTypes';
+
 const memoriesReducer = (memories = [], action) => {
   switch(action.type) {
-    case 'FETCH_ALL':
+    case FETCH_ALL:
       return action.payload;
 
-    case 'CREATE':
+    case CREATE:
       return [...memories, action.payload];
 
-    case 'UPDATE':
-    case 'LIKE':
+    case UPDATE:
+    case LIKE:
       return memories.map((memory) => 
         memory._id === action.payload._id ? action.payload : memory
       )
 
-    case 'DELETE':
+    case DELETE:
       return memories.filter((memory) => memory._id !== action.payload)
 
     default:
