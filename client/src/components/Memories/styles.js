@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-const themeSpace = createTheme();
+const theme = createTheme();
 
 export default makeStyles(() => ({
   mainContainer: {
@@ -9,7 +9,7 @@ export default makeStyles(() => ({
     alignItems: 'center',
   },
   smMargin: {
-    margin: themeSpace.spacing(1),
+    margin: theme.spacing(1),
   },
   actionDiv: {
     textAlign: 'center',
