@@ -97,10 +97,17 @@ const Form = ({ currentId, setCurrentId }) => {
         />
 
         <div className={classes.fileInput}>
+          {
+            memoryData.selectedFile && (
+              <img src={memoryData.selectedFile} alt="Imagem Enviada" />
+            )
+          }
           <FileBase 
             type="file"
             multiple={false}
-            onDone={({ base64 }) => setMemoryData({ ...memoryData, selectedFile: base64 })}
+            onDone={
+              ({ base64 }) => setMemoryData({ ...memoryData, selectedFile: base64 })
+            }
           />
         </div>
 

@@ -20,6 +20,9 @@ export default makeStyles(() => ({
   fileInput: {
     width: '97%',
     margin: '10px 0',
+    '& > img': {
+      width: '100%',
+    }
   },
   buttonSubmit: {
     marginBottom: '10px !important',
